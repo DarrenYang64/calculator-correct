@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Darren 語言交換結算系統</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --primary-text: #333;
+            --accent-color: #2c3e50;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 { text-align: center; color: var(--accent-color); margin-bottom: 20px; font-size: 1.4em; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9em; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            background: #fafafa;
+            -webkit-appearance: none;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+        }
+        .result p { 
+            margin: 12px 0; 
+            font-size: 1.1em; 
+            display: flex; 
+            justify-content: space-between;
+            color: var(--primary-text);
+        }
+        .calculation-note { font-size: 0.75em; color: #888; margin-top: 15px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>活動結算系統</h2>
+    
+    <div class="input-group">
+        <label>NTD 170 人數</label>
+        <input type="number" id="n170" placeholder="0" inputmode="numeric" oninput="calculate()">
+    </div>
+    
+    <div class="input-group">
+        <label>NTD 150 人數</label>
+        <input type="number" id="n150" placeholder="0" inputmode="numeric" oninput="calculate()">
+    </div>
+    
+    <div class="input-group">
+        <label>NTD 120 人數</label>
+        <input type="number" id="n120" placeholder="0" inputmode="numeric" oninput="calculate()">
+    </div>
+
+    <div class="result" id="resultArea">
+        <p><span>總人數</span> <span id="totalP">0</span></p>
+        <p><span>總收入</span> <span id="valT">0</span></p>
+        <p><span>場地老闆收入</span> <span id="valR">900</span></p>
+        <p><span>主持人收入</span> <span id="valH">900</span></p>
+        <p><span>主辦人(Darren)收入</span> <span id="valNet">-1800</span></p>
+    </div>
+
+    <div class="calculation-note">
+        * R = 0.3T + 360 (Min 900, Max 1800)<br>
+        * H 平滑公式：900 + (R-1200) * 0.5 (Max 1200)
+    </div>
+</div>
+
+<script>
+function calculate() {
+    const n170 = parseInt(document.getElementById('n170').value) || 0;
+    const n150 = parseInt(document.getElementById('n150').value) || 0;
+    const n120 = parseInt(document.getElementById('n120').value) || 0;
+
+    const T = (n170 * 170) + (n150 * 150) + (n120 * 120);
+
+    let R = (0.3 * T) + 360;
+    if (R < 900) R = 900;
+    if (R > 1800) R = 1800;
+
+    let H = 900;
+    if (R > 1200) {
+        H = 900 + (R - 1200) * 0.5;
+    }
+    if (H > 1200) H = 1200;
+
+    const Net = T - R - H;
+
+    document.getElementById('totalP').innerText = n170 + n150 + n120;
+    document.getElementById('valT').innerText = Math.round(T);
+    document.getElementById('valR').innerText = Math.round(R);
+    document.getElementById('valH').innerText = Math.round(H);
+    document.getElementById('valNet').innerText = Math.round(Net);
+}
+</script>
+
+</body>
+</html>
