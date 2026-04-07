@@ -28,9 +28,21 @@
             width: 100%;
             max-width: 400px;
         }
-        h2 { text-align: center; color: var(--accent-color); margin-bottom: 20px; font-size: 1.4em; }
-        .input-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9em; }
+        h2 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
         input {
             width: 100%;
             padding: 12px;
@@ -48,31 +60,36 @@
             border-radius: 10px;
             border-left: 5px solid var(--accent-color);
         }
-        .result p { 
-            margin: 12px 0; 
-            font-size: 1.1em; 
-            display: flex; 
+        .result p {
+            margin: 12px 0;
+            font-size: 1.1em;
+            display: flex;
             justify-content: space-between;
             color: var(--primary-text);
         }
-        .calculation-note { font-size: 0.75em; color: #888; margin-top: 15px; line-height: 1.4; }
+        .calculation-note {
+            font-size: 0.75em;
+            color: #888;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>活動結算系統</h2>
-    
+
     <div class="input-group">
         <label>NTD 170 人數</label>
         <input type="number" id="n170" placeholder="0" inputmode="numeric" oninput="calculate()">
     </div>
-    
+
     <div class="input-group">
         <label>NTD 150 人數</label>
         <input type="number" id="n150" placeholder="0" inputmode="numeric" oninput="calculate()">
     </div>
-    
+
     <div class="input-group">
         <label>NTD 120 人數</label>
         <input type="number" id="n120" placeholder="0" inputmode="numeric" oninput="calculate()">
@@ -98,24 +115,27 @@ function calculate() {
     const n150 = parseInt(document.getElementById('n150').value) || 0;
     const n120 = parseInt(document.getElementById('n120').value) || 0;
 
+    const totalPeople = n170 + n150 + n120;
     const T = (n170 * 170) + (n150 * 150) + (n120 * 120);
 
     let R = (0.3 * T) + 360;
     if (R < 900) R = 900;
     if (R > 1800) R = 1800;
+    R = Math.round(R);
 
     let H = 900;
     if (R > 1200) {
         H = 900 + (R - 1200) * 0.5;
     }
     if (H > 1200) H = 1200;
+    H = Math.round(H);
 
     const Net = T - R - H;
 
-    document.getElementById('totalP').innerText = n170 + n150 + n120;
+    document.getElementById('totalP').innerText = totalPeople;
     document.getElementById('valT').innerText = Math.round(T);
-    document.getElementById('valR').innerText = Math.round(R);
-    document.getElementById('valH').innerText = Math.round(H);
+    document.getElementById('valR').innerText = R;
+    document.getElementById('valH').innerText = H;
     document.getElementById('valNet').innerText = Math.round(Net);
 }
 </script>
