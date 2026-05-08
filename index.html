@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Darren 語言交換結算系統</title>
+    <title>Darren 語言交換結算系統｜文化幣 600 加成版</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
             --card-bg: #ffffff;
             --primary-text: #333;
+            --muted-text: #777;
             --accent-color: #2c3e50;
+            --border-color: #e5e7eb;
+            --soft-bg: #f8f9fa;
+            --warning-bg: #fff7ed;
+            --warning-border: #f97316;
+            --warning-text: #9a3412;
+            --good-bg: #f0fdf4;
+            --good-border: #16a34a;
+            --good-text: #166534;
+            --venue-highlight-bg: #fff7ed;
+            --venue-highlight-border: #fb923c;
+            --venue-highlight-text: #9a3412;
+            --host-highlight-bg: #eff6ff;
+            --host-highlight-border: #60a5fa;
+            --host-highlight-text: #1d4ed8;
+            --darren-highlight-bg: #ecfdf5;
+            --darren-highlight-border: #34d399;
+            --darren-highlight-text: #047857;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
@@ -20,29 +39,51 @@
             padding: 20px;
             margin: 0;
         }
+
         .container {
             background: var(--card-bg);
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 440px;
         }
+
         h2 {
             text-align: center;
             color: var(--accent-color);
-            margin-bottom: 20px;
+            margin-bottom: 6px;
             font-size: 1.4em;
         }
+
+        .subtitle {
+            text-align: center;
+            color: var(--muted-text);
+            font-size: 0.82em;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .section-title {
+            margin: 22px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.95em;
+        }
+
         .input-group {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             font-size: 0.9em;
         }
+
         input {
             width: 100%;
             padding: 12px;
@@ -53,25 +94,134 @@
             background: #fafafa;
             -webkit-appearance: none;
         }
+
         .result {
             margin-top: 20px;
             padding: 15px;
-            background: #f8f9fa;
+            background: var(--soft-bg);
             border-radius: 10px;
             border-left: 5px solid var(--accent-color);
         }
+
         .result p {
             margin: 12px 0;
-            font-size: 1.1em;
+            font-size: 1.04em;
             display: flex;
             justify-content: space-between;
+            gap: 12px;
             color: var(--primary-text);
         }
+
+        .result p.small {
+            font-size: 0.92em;
+            color: var(--muted-text);
+            margin: 9px 0;
+        }
+
+        .result p.total-line {
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+            font-weight: 700;
+        }
+
+        .result p.strong-line {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .result p.highlight-line {
+            padding: 11px 12px;
+            border-radius: 11px;
+            border-left: 5px solid;
+            font-weight: 700;
+            align-items: center;
+            margin: 11px 0;
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
+        }
+
+        .result p.highlight-line span:last-child {
+            font-size: 1.12em;
+            letter-spacing: 0.01em;
+        }
+
+        .result p.venue-highlight {
+            background: var(--venue-highlight-bg);
+            border-left-color: var(--venue-highlight-border);
+            color: var(--venue-highlight-text);
+        }
+
+        .result p.host-highlight {
+            background: var(--host-highlight-bg);
+            border-left-color: var(--host-highlight-border);
+            color: var(--host-highlight-text);
+        }
+
+        .result p.darren-highlight {
+            background: var(--darren-highlight-bg);
+            border-left-color: var(--darren-highlight-border);
+            color: var(--darren-highlight-text);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            color: #374151;
+            font-size: 0.78em;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .warning, .info {
+            display: none;
+            margin-top: 14px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.82em;
+            line-height: 1.45;
+        }
+
+        .warning {
+            background: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            color: var(--warning-text);
+        }
+
+        .info {
+            background: var(--good-bg);
+            border-left: 4px solid var(--good-border);
+            color: var(--good-text);
+        }
+
         .calculation-note {
             font-size: 0.75em;
             color: #888;
             margin-top: 15px;
-            line-height: 1.4;
+            line-height: 1.55;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px 12px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.96em;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #e5e7eb;
+            color: #374151;
         }
     </style>
 </head>
@@ -79,65 +229,179 @@
 
 <div class="container">
     <h2>活動結算系統</h2>
+    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算</div>
+
+    <div class="section-title">現金收入</div>
 
     <div class="input-group">
-        <label>NTD 170 人數</label>
-        <input type="number" id="n170" placeholder="0" inputmode="numeric" oninput="calculate()">
+        <label>NTD 170 現金人數</label>
+        <input type="number" id="n170" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
     </div>
 
     <div class="input-group">
-        <label>NTD 150 人數</label>
-        <input type="number" id="n150" placeholder="0" inputmode="numeric" oninput="calculate()">
+        <label>NTD 150 現金人數</label>
+        <input type="number" id="n150" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
     </div>
 
     <div class="input-group">
-        <label>NTD 120 人數</label>
-        <input type="number" id="n120" placeholder="0" inputmode="numeric" oninput="calculate()">
+        <label>NTD 120 現金人數</label>
+        <input type="number" id="n120" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+    </div>
+
+    <div class="section-title">文化幣收入</div>
+
+    <div class="input-group">
+        <label>文化幣 NTD 120 人數</label>
+        <input type="number" id="c120" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+    </div>
+
+    <div class="button-row">
+        <button type="button" class="secondary" onclick="clearInputs()">清空</button>
+        <button type="button" onclick="calculate()">重新計算</button>
     </div>
 
     <div class="result" id="resultArea">
         <p><span>總人數</span> <span id="totalP">0</span></p>
-        <p><span>總收入</span> <span id="valT">0</span></p>
-        <p><span>場地老闆收入</span> <span id="valR">900</span></p>
-        <p><span>主持人收入</span> <span id="valH">900</span></p>
-        <p><span>主辦人(Darren)收入</span> <span id="valNet">-1800</span></p>
+        <p><span>現金收入</span> <span id="cashT">0</span></p>
+        <p><span>文化幣收入</span> <span id="cultureT">0</span></p>
+        <p class="small"><span>主持人計算用收入<span class="pill">現金+文化幣</span></span> <span id="effectiveT">0</span></p>
+
+        <p class="total-line"><span>場地基準分潤<span class="pill">只算現金</span></span> <span id="venueBaseCash">0</span></p>
+        <p class="small"><span>文化幣書店加成<span class="pill">最多600</span></span> <span id="cultureBonus">0</span></p>
+        <p class="strong-line"><span>場地制度合計</span> <span id="venueSystemTotal">0</span></p>
+
+        <p class="highlight-line venue-highlight"><span>場地老闆現金</span> <span id="venueCash">0</span></p>
+        <p><span>場地老闆文化幣</span> <span id="venueCulture">0</span></p>
+        <p class="strong-line"><span>場地實收合計</span> <span id="venueActualTotal">0</span></p>
+
+        <p class="highlight-line host-highlight"><span>主持人收入</span> <span id="valH">0</span></p>
+        <p class="highlight-line darren-highlight"><span>主辦人(Darren)現金收入</span> <span id="valNet">0</span></p>
+    </div>
+
+    <div class="info" id="cultureOffsetInfo">
+        文化幣收入已高於場地制度合計，系統已將場地現金歸零；文化幣由書店實際收取，不倒扣主辦。
+    </div>
+
+    <div class="warning" id="cashWarning">
+        現金池不足以支付場地現金與主持人收入，主辦人現金收入為負數。請確認是否需要由主辦補現金。
     </div>
 
     <div class="calculation-note">
-        * R = 0.3T + 360 (Min 900, Max 1800)<br>
-        * H 平滑公式：900 + (R-1200) * 0.5 (Max 1200)
+        * 現金收入與文化幣收入分成兩個池子。<br>
+        * 場地基準分潤只用現金收入計算：0.3 × 現金收入 + 360，Min 900，Max 1800。<br>
+        * 文化幣書店加成 = Min(文化幣收入, 600)。<br>
+        * 場地制度合計 = 場地基準分潤 + 文化幣書店加成。<br>
+        * 場地老闆現金 = Max(0, 場地制度合計 - 文化幣收入)。<br>
+        * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。
     </div>
 </div>
 
 <script>
+const VENUE_CASH_MIN = 900;
+const VENUE_CASH_MAX = 1800;
+const CULTURE_BONUS_MAX = 600;
+const HOST_MIN = 900;
+const HOST_MAX = 1200;
+
+function getNumber(id) {
+    const value = parseInt(document.getElementById(id).value, 10);
+    return Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+}
+
+function money(value) {
+    return Math.round(value);
+}
+
+function setText(id, value) {
+    document.getElementById(id).innerText = money(value);
+}
+
 function calculate() {
-    const n170 = parseInt(document.getElementById('n170').value) || 0;
-    const n150 = parseInt(document.getElementById('n150').value) || 0;
-    const n120 = parseInt(document.getElementById('n120').value) || 0;
+    const n170 = getNumber('n170');
+    const n150 = getNumber('n150');
+    const n120 = getNumber('n120');
+    const c120 = getNumber('c120');
 
-    const totalPeople = n170 + n150 + n120;
-    const T = (n170 * 170) + (n150 * 150) + (n120 * 120);
+    const cashPeople = n170 + n150 + n120;
+    const culturePeople = c120;
+    const totalPeople = cashPeople + culturePeople;
 
-    let R = (0.3 * T) + 360;
-    if (R < 900) R = 900;
-    if (R > 1800) R = 1800;
-    R = Math.round(R);
+    const cashRevenue = (n170 * 170) + (n150 * 150) + (n120 * 120);
+    const cultureRevenue = c120 * 120;
 
-    let H = 900;
-    if (R > 1200) {
-        H = 900 + (R - 1200) * 0.5;
+    // 等效收入只給主持人使用：主持人服務的是總參加人數，不是付款方式。
+    const hostReferenceRevenue = cashRevenue + cultureRevenue;
+
+    let venueBaseCash = 0;
+    let cultureBonus = 0;
+    let venueSystemTotal = 0;
+    let venueCash = 0;
+    let venueActualTotal = 0;
+    let hostIncome = 0;
+    let darrenCashIncome = 0;
+
+    if (totalPeople > 0) {
+        // 場地基準只看現金收入，避免文化幣在場地端被算兩次。
+        venueBaseCash = money(clamp((0.3 * cashRevenue) + 360, VENUE_CASH_MIN, VENUE_CASH_MAX));
+
+        // 文化幣是獨立加成，最高 600。
+        cultureBonus = money(Math.min(cultureRevenue, CULTURE_BONUS_MAX));
+
+        // 2400 只是 1800 + 600 的自然結果，不另外套總額封頂。
+        venueSystemTotal = money(venueBaseCash + cultureBonus);
+
+        // 書店已收到文化幣，現金只補到制度合計；最低 0，不倒扣。
+        venueCash = money(Math.max(0, venueSystemTotal - cultureRevenue));
+        venueActualTotal = money(venueCash + cultureRevenue);
+
+        // 主持人用等效收入計算。
+        let hostReferenceR = (0.3 * hostReferenceRevenue) + 360;
+        hostReferenceR = clamp(hostReferenceR, VENUE_CASH_MIN, VENUE_CASH_MAX);
+
+        hostIncome = HOST_MIN;
+        if (hostReferenceR > 1200) {
+            hostIncome = HOST_MIN + (hostReferenceR - 1200) * 0.5;
+        }
+        hostIncome = money(clamp(hostIncome, HOST_MIN, HOST_MAX));
+
+        // Darren 只從現金池拿。
+        darrenCashIncome = money(cashRevenue - venueCash - hostIncome);
     }
-    if (H > 1200) H = 1200;
-    H = Math.round(H);
-
-    const Net = T - R - H;
 
     document.getElementById('totalP').innerText = totalPeople;
-    document.getElementById('valT').innerText = Math.round(T);
-    document.getElementById('valR').innerText = R;
-    document.getElementById('valH').innerText = H;
-    document.getElementById('valNet').innerText = Math.round(Net);
+    setText('cashT', cashRevenue);
+    setText('cultureT', cultureRevenue);
+    setText('effectiveT', hostReferenceRevenue);
+
+    setText('venueBaseCash', venueBaseCash);
+    setText('cultureBonus', cultureBonus);
+    setText('venueSystemTotal', venueSystemTotal);
+    setText('venueCash', venueCash);
+    setText('venueCulture', cultureRevenue);
+    setText('venueActualTotal', venueActualTotal);
+
+    setText('valH', hostIncome);
+    setText('valNet', darrenCashIncome);
+
+    document.getElementById('cultureOffsetInfo').style.display =
+        totalPeople > 0 && cultureRevenue > venueSystemTotal ? 'block' : 'none';
+
+    document.getElementById('cashWarning').style.display =
+        totalPeople > 0 && darrenCashIncome < 0 ? 'block' : 'none';
 }
+
+function clearInputs() {
+    ['n170', 'n150', 'n120', 'c120'].forEach(id => {
+        document.getElementById(id).value = '';
+    });
+    calculate();
+}
+
+calculate();
 </script>
 
 </body>
