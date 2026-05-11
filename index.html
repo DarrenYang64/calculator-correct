@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Darren 語言交換結算系統｜文化幣 600 加成版</title>
+    <title>Darren 語言交換結算系統｜文化幣 600 加成版｜截圖摘要版</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
@@ -19,15 +19,6 @@
             --good-bg: #f0fdf4;
             --good-border: #16a34a;
             --good-text: #166534;
-            --venue-highlight-bg: #fff7ed;
-            --venue-highlight-border: #fb923c;
-            --venue-highlight-text: #9a3412;
-            --host-highlight-bg: #eff6ff;
-            --host-highlight-border: #60a5fa;
-            --host-highlight-text: #1d4ed8;
-            --darren-highlight-bg: #ecfdf5;
-            --darren-highlight-border: #34d399;
-            --darren-highlight-text: #047857;
         }
 
         body {
@@ -129,39 +120,6 @@
             color: var(--accent-color);
         }
 
-        .result p.highlight-line {
-            padding: 11px 12px;
-            border-radius: 11px;
-            border-left: 5px solid;
-            font-weight: 700;
-            align-items: center;
-            margin: 11px 0;
-            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.05);
-        }
-
-        .result p.highlight-line span:last-child {
-            font-size: 1.12em;
-            letter-spacing: 0.01em;
-        }
-
-        .result p.venue-highlight {
-            background: var(--venue-highlight-bg);
-            border-left-color: var(--venue-highlight-border);
-            color: var(--venue-highlight-text);
-        }
-
-        .result p.host-highlight {
-            background: var(--host-highlight-bg);
-            border-left-color: var(--host-highlight-border);
-            color: var(--host-highlight-text);
-        }
-
-        .result p.darren-highlight {
-            background: var(--darren-highlight-bg);
-            border-left-color: var(--darren-highlight-border);
-            color: var(--darren-highlight-text);
-        }
-
         .pill {
             display: inline-block;
             padding: 2px 7px;
@@ -171,6 +129,110 @@
             font-size: 0.78em;
             margin-left: 6px;
             vertical-align: middle;
+        }
+
+
+        .settlement-summary {
+            margin-bottom: 18px;
+            padding: 16px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .summary-title {
+            font-size: 1.12em;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .summary-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 9px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+            gap: 8px;
+        }
+
+        .summary-item span {
+            color: #4b5563;
+            line-height: 1.25;
+        }
+
+        .summary-item strong {
+            font-size: 1.14em;
+            color: #111827;
+            flex-shrink: 0;
+        }
+
+        .summary-total {
+            margin: 10px 0 14px;
+            padding: 10px 12px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.06em;
+        }
+
+        .payout-card {
+            margin-top: 10px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.08em;
+            font-weight: 800;
+            gap: 12px;
+        }
+
+        .payout-card strong {
+            font-size: 1.35em;
+            flex-shrink: 0;
+        }
+
+        .payout-card.venue {
+            background: #fff7ed;
+            color: #9a3412;
+            border-left: 6px solid #f97316;
+        }
+
+        .payout-card.host {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border-left: 6px solid #3b82f6;
+        }
+
+        .payout-card.darren {
+            background: #ecfdf5;
+            color: #047857;
+            border-left: 6px solid #10b981;
+        }
+
+        .detail-title {
+            margin: 18px 0 8px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-color);
+            font-size: 0.95em;
+            font-weight: 800;
+            color: var(--muted-text);
+            text-align: center;
         }
 
         .warning, .info {
@@ -229,7 +291,7 @@
 
 <div class="container">
     <h2>活動結算系統</h2>
-    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算</div>
+    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>上方摘要可直接截圖給主持人</div>
 
     <div class="section-title">現金收入</div>
 
@@ -261,6 +323,51 @@
     </div>
 
     <div class="result" id="resultArea">
+
+        <div class="settlement-summary">
+            <div class="summary-title">本場結算摘要｜截圖用</div>
+
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span>170 現金人數</span>
+                    <strong id="sumN170">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>150 現金人數</span>
+                    <strong id="sumN150">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>120 現金人數</span>
+                    <strong id="sumN120">0</strong>
+                </div>
+                <div class="summary-item">
+                    <span>文化幣人數</span>
+                    <strong id="sumC120">0</strong>
+                </div>
+            </div>
+
+            <div class="summary-total">
+                <span>總人數</span>
+                <strong id="sumTotalPeople">0</strong>
+            </div>
+
+            <div class="payout-card venue">
+                <span>場地老闆現金</span>
+                <strong id="sumVenueCash">0</strong>
+            </div>
+
+            <div class="payout-card host">
+                <span>主持人現金</span>
+                <strong id="sumHostIncome">0</strong>
+            </div>
+
+            <div class="payout-card darren">
+                <span>Darren 現金收入</span>
+                <strong id="sumDarrenIncome">0</strong>
+            </div>
+        </div>
+
+        <div class="detail-title">詳細計算</div>
         <p><span>總人數</span> <span id="totalP">0</span></p>
         <p><span>現金收入</span> <span id="cashT">0</span></p>
         <p><span>文化幣收入</span> <span id="cultureT">0</span></p>
@@ -270,12 +377,12 @@
         <p class="small"><span>文化幣書店加成<span class="pill">最多600</span></span> <span id="cultureBonus">0</span></p>
         <p class="strong-line"><span>場地制度合計</span> <span id="venueSystemTotal">0</span></p>
 
-        <p class="highlight-line venue-highlight"><span>場地老闆現金</span> <span id="venueCash">0</span></p>
+        <p><span>場地老闆現金</span> <span id="venueCash">0</span></p>
         <p><span>場地老闆文化幣</span> <span id="venueCulture">0</span></p>
         <p class="strong-line"><span>場地實收合計</span> <span id="venueActualTotal">0</span></p>
 
-        <p class="highlight-line host-highlight"><span>主持人收入</span> <span id="valH">0</span></p>
-        <p class="highlight-line darren-highlight"><span>主辦人(Darren)現金收入</span> <span id="valNet">0</span></p>
+        <p><span>主持人收入</span> <span id="valH">0</span></p>
+        <p class="total-line"><span>主辦人(Darren)現金收入</span> <span id="valNet">0</span></p>
     </div>
 
     <div class="info" id="cultureOffsetInfo">
@@ -373,6 +480,16 @@ function calculate() {
     }
 
     document.getElementById('totalP').innerText = totalPeople;
+
+    setText('sumN170', n170);
+    setText('sumN150', n150);
+    setText('sumN120', n120);
+    setText('sumC120', c120);
+    setText('sumTotalPeople', totalPeople);
+
+    setText('sumVenueCash', venueCash);
+    setText('sumHostIncome', hostIncome);
+    setText('sumDarrenIncome', darrenCashIncome);
     setText('cashT', cashRevenue);
     setText('cultureT', cultureRevenue);
     setText('effectiveT', hostReferenceRevenue);
