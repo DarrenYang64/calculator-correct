@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Darren 語言交換結算系統｜文化幣 600 加成版｜截圖摘要版</title>
+    <title>Darren 語言交換結算系統｜文化幣 600 加成版｜截圖摘要版｜主持人1050-1350</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
@@ -84,6 +84,7 @@
             box-sizing: border-box;
             background: #fafafa;
             -webkit-appearance: none;
+            appearance: none;
         }
 
         .result {
@@ -130,7 +131,6 @@
             margin-left: 6px;
             vertical-align: middle;
         }
-
 
         .settlement-summary {
             margin-bottom: 18px;
@@ -291,30 +291,30 @@
 
 <div class="container">
     <h2>活動結算系統</h2>
-    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>上方摘要可直接截圖給主持人</div>
+    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>主持人 1050–1350｜上方摘要可直接截圖給主持人</div>
 
     <div class="section-title">現金收入</div>
 
     <div class="input-group">
         <label>NTD 170 現金人數</label>
-        <input type="number" id="n170" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+        <input type="tel" id="n170" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
     </div>
 
     <div class="input-group">
         <label>NTD 150 現金人數</label>
-        <input type="number" id="n150" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+        <input type="tel" id="n150" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
     </div>
 
     <div class="input-group">
         <label>NTD 120 現金人數</label>
-        <input type="number" id="n120" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+        <input type="tel" id="n120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
     </div>
 
     <div class="section-title">文化幣收入</div>
 
     <div class="input-group">
         <label>文化幣 NTD 120 人數</label>
-        <input type="number" id="c120" placeholder="0" min="0" inputmode="numeric" oninput="calculate()">
+        <input type="tel" id="c120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
     </div>
 
     <div class="button-row">
@@ -399,7 +399,8 @@
         * 文化幣書店加成 = Min(文化幣收入, 600)。<br>
         * 場地制度合計 = 場地基準分潤 + 文化幣書店加成。<br>
         * 場地老闆現金 = Max(0, 場地制度合計 - 文化幣收入)。<br>
-        * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。
+        * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。<br>
+        * 主持人收入新版：0.2 ×（現金收入 + 文化幣收入）+ 450，Min 1050，Max 1350。
     </div>
 </div>
 
@@ -407,11 +408,15 @@
 const VENUE_CASH_MIN = 900;
 const VENUE_CASH_MAX = 1800;
 const CULTURE_BONUS_MAX = 600;
-const HOST_MIN = 900;
-const HOST_MAX = 1200;
+const HOST_MIN = 1050;
+const HOST_MAX = 1350;
 
 function getNumber(id) {
-    const value = parseInt(document.getElementById(id).value, 10);
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const cleaned = String(el.value || '0').replace(/[^0-9]/g, '');
+    if (cleaned === '') return 0;
+    const value = parseInt(cleaned, 10);
     return Number.isFinite(value) && value > 0 ? value : 0;
 }
 
@@ -420,11 +425,12 @@ function clamp(value, min, max) {
 }
 
 function money(value) {
-    return Math.round(value);
+    return Math.round(Number(value) || 0);
 }
 
 function setText(id, value) {
-    document.getElementById(id).innerText = money(value);
+    const el = document.getElementById(id);
+    if (el) el.innerText = money(value);
 }
 
 function calculate() {
@@ -465,15 +471,8 @@ function calculate() {
         venueCash = money(Math.max(0, venueSystemTotal - cultureRevenue));
         venueActualTotal = money(venueCash + cultureRevenue);
 
-        // 主持人用等效收入計算。
-        let hostReferenceR = (0.3 * hostReferenceRevenue) + 360;
-        hostReferenceR = clamp(hostReferenceR, VENUE_CASH_MIN, VENUE_CASH_MAX);
-
-        hostIncome = HOST_MIN;
-        if (hostReferenceR > 1200) {
-            hostIncome = HOST_MIN + (hostReferenceR - 1200) * 0.5;
-        }
-        hostIncome = money(clamp(hostIncome, HOST_MIN, HOST_MAX));
+        // 主持人新版：0.2 ×（現金收入 + 文化幣收入）+ 450，Min 1050，Max 1350。
+        hostIncome = money(clamp((0.2 * hostReferenceRevenue) + 450, HOST_MIN, HOST_MAX));
 
         // Darren 只從現金池拿。
         darrenCashIncome = money(cashRevenue - venueCash - hostIncome);
@@ -518,6 +517,10 @@ function clearInputs() {
     calculate();
 }
 
+window.calculate = calculate;
+window.clearInputs = clearInputs;
+
+document.addEventListener('DOMContentLoaded', calculate);
 calculate();
 </script>
 
