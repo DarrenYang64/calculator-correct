@@ -400,7 +400,7 @@
         * 場地制度合計 = 場地基準分潤 + 文化幣書店加成。<br>
         * 場地老闆現金 = Max(0, 場地制度合計 - 文化幣收入)。<br>
         * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。<br>
-        * 主持人收入新版：0.2 ×（現金收入 + 文化幣收入）+ 450，Min 1050，Max 1350。
+        * 主持人收入新版：保留原本場地 base 邏輯，底薪 1050，頂薪 1350。
     </div>
 </div>
 
@@ -471,8 +471,14 @@ function calculate() {
         venueCash = money(Math.max(0, venueSystemTotal - cultureRevenue));
         venueActualTotal = money(venueCash + cultureRevenue);
 
-        // 主持人新版：0.2 ×（現金收入 + 文化幣收入）+ 450，Min 1050，Max 1350。
-        hostIncome = money(clamp((0.2 * hostReferenceRevenue) + 450, HOST_MIN, HOST_MAX));
+        // 主持人新版：保留原本邏輯，將底薪/頂薪各上調 150。
+        // 舊邏輯：跟著場地 base 分潤走；場地 base 超過 1200 的部分，主持人拿 50%。
+        // 新版：底薪 1050，頂薪 1350。
+        let hostReferenceR = (0.3 * hostReferenceRevenue) + 360;
+        hostReferenceR = clamp(hostReferenceR, VENUE_CASH_MIN, VENUE_CASH_MAX);
+
+        hostIncome = HOST_MIN + (hostReferenceR - 1200) * 0.5;
+        hostIncome = money(clamp(hostIncome, HOST_MIN, HOST_MAX));
 
         // Darren 只從現金池拿。
         darrenCashIncome = money(cashRevenue - venueCash - hostIncome);
