@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Darren 語言交換結算系統｜文化幣 600 加成版｜截圖摘要版｜主持人1050-1350</title>
+    <title>Darren 語言交換結算系統｜文化幣 600 加成版｜主持人超額加給版</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
@@ -64,9 +64,7 @@
             font-size: 0.95em;
         }
 
-        .input-group {
-            margin-bottom: 15px;
-        }
+        .input-group { margin-bottom: 15px; }
 
         label {
             display: block;
@@ -167,16 +165,8 @@
             gap: 8px;
         }
 
-        .summary-item span {
-            color: #4b5563;
-            line-height: 1.25;
-        }
-
-        .summary-item strong {
-            font-size: 1.14em;
-            color: #111827;
-            flex-shrink: 0;
-        }
+        .summary-item span { color: #4b5563; line-height: 1.25; }
+        .summary-item strong { font-size: 1.14em; color: #111827; flex-shrink: 0; }
 
         .summary-total {
             margin: 10px 0 14px;
@@ -202,28 +192,10 @@
             gap: 12px;
         }
 
-        .payout-card strong {
-            font-size: 1.35em;
-            flex-shrink: 0;
-        }
-
-        .payout-card.venue {
-            background: #fff7ed;
-            color: #9a3412;
-            border-left: 6px solid #f97316;
-        }
-
-        .payout-card.host {
-            background: #eff6ff;
-            color: #1d4ed8;
-            border-left: 6px solid #3b82f6;
-        }
-
-        .payout-card.darren {
-            background: #ecfdf5;
-            color: #047857;
-            border-left: 6px solid #10b981;
-        }
+        .payout-card strong { font-size: 1.35em; flex-shrink: 0; }
+        .payout-card.venue { background: #fff7ed; color: #9a3412; border-left: 6px solid #f97316; }
+        .payout-card.host { background: #eff6ff; color: #1d4ed8; border-left: 6px solid #3b82f6; }
+        .payout-card.darren { background: #ecfdf5; color: #047857; border-left: 6px solid #10b981; }
 
         .detail-title {
             margin: 18px 0 8px;
@@ -244,17 +216,8 @@
             line-height: 1.45;
         }
 
-        .warning {
-            background: var(--warning-bg);
-            border-left: 4px solid var(--warning-border);
-            color: var(--warning-text);
-        }
-
-        .info {
-            background: var(--good-bg);
-            border-left: 4px solid var(--good-border);
-            color: var(--good-text);
-        }
+        .warning { background: var(--warning-bg); border-left: 4px solid var(--warning-border); color: var(--warning-text); }
+        .info { background: var(--good-bg); border-left: 4px solid var(--good-border); color: var(--good-text); }
 
         .calculation-note {
             font-size: 0.75em;
@@ -263,11 +226,7 @@
             line-height: 1.55;
         }
 
-        .button-row {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-        }
+        .button-row { display: flex; gap: 10px; margin-top: 12px; }
 
         button {
             width: 100%;
@@ -281,41 +240,22 @@
             cursor: pointer;
         }
 
-        button.secondary {
-            background: #e5e7eb;
-            color: #374151;
-        }
+        button.secondary { background: #e5e7eb; color: #374151; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h2>活動結算系統</h2>
-    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>主持人 1050–1350｜上方摘要可直接截圖給主持人</div>
+    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>主持人 1050–1350＋超額加給｜上方摘要可直接截圖給主持人</div>
 
     <div class="section-title">現金收入</div>
-
-    <div class="input-group">
-        <label>NTD 170 現金人數</label>
-        <input type="tel" id="n170" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
-    </div>
-
-    <div class="input-group">
-        <label>NTD 150 現金人數</label>
-        <input type="tel" id="n150" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
-    </div>
-
-    <div class="input-group">
-        <label>NTD 120 現金人數</label>
-        <input type="tel" id="n120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
-    </div>
+    <div class="input-group"><label>NTD 170 現金人數</label><input type="tel" id="n170" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()"></div>
+    <div class="input-group"><label>NTD 150 現金人數</label><input type="tel" id="n150" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()"></div>
+    <div class="input-group"><label>NTD 120 現金人數</label><input type="tel" id="n120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()"></div>
 
     <div class="section-title">文化幣收入</div>
-
-    <div class="input-group">
-        <label>文化幣 NTD 120 人數</label>
-        <input type="tel" id="c120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()">
-    </div>
+    <div class="input-group"><label>文化幣 NTD 120 人數</label><input type="tel" id="c120" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()"></div>
 
     <div class="button-row">
         <button type="button" class="secondary" onclick="clearInputs()">清空</button>
@@ -323,48 +263,18 @@
     </div>
 
     <div class="result" id="resultArea">
-
         <div class="settlement-summary">
             <div class="summary-title">本場結算摘要｜截圖用</div>
-
             <div class="summary-grid">
-                <div class="summary-item">
-                    <span>170 現金人數</span>
-                    <strong id="sumN170">0</strong>
-                </div>
-                <div class="summary-item">
-                    <span>150 現金人數</span>
-                    <strong id="sumN150">0</strong>
-                </div>
-                <div class="summary-item">
-                    <span>120 現金人數</span>
-                    <strong id="sumN120">0</strong>
-                </div>
-                <div class="summary-item">
-                    <span>文化幣人數</span>
-                    <strong id="sumC120">0</strong>
-                </div>
+                <div class="summary-item"><span>170 現金人數</span><strong id="sumN170">0</strong></div>
+                <div class="summary-item"><span>150 現金人數</span><strong id="sumN150">0</strong></div>
+                <div class="summary-item"><span>120 現金人數</span><strong id="sumN120">0</strong></div>
+                <div class="summary-item"><span>文化幣人數</span><strong id="sumC120">0</strong></div>
             </div>
-
-            <div class="summary-total">
-                <span>總人數</span>
-                <strong id="sumTotalPeople">0</strong>
-            </div>
-
-            <div class="payout-card venue">
-                <span>場地老闆現金</span>
-                <strong id="sumVenueCash">0</strong>
-            </div>
-
-            <div class="payout-card host">
-                <span>主持人現金</span>
-                <strong id="sumHostIncome">0</strong>
-            </div>
-
-            <div class="payout-card darren">
-                <span>Darren 現金收入</span>
-                <strong id="sumDarrenIncome">0</strong>
-            </div>
+            <div class="summary-total"><span>總人數</span><strong id="sumTotalPeople">0</strong></div>
+            <div class="payout-card venue"><span>場地老闆現金</span><strong id="sumVenueCash">0</strong></div>
+            <div class="payout-card host"><span>主持人現金</span><strong id="sumHostIncome">0</strong></div>
+            <div class="payout-card darren"><span>Darren 現金收入</span><strong id="sumDarrenIncome">0</strong></div>
         </div>
 
         <div class="detail-title">詳細計算</div>
@@ -372,26 +282,18 @@
         <p><span>現金收入</span> <span id="cashT">0</span></p>
         <p><span>文化幣收入</span> <span id="cultureT">0</span></p>
         <p class="small"><span>主持人計算用收入<span class="pill">現金+文化幣</span></span> <span id="effectiveT">0</span></p>
-
         <p class="total-line"><span>場地基準分潤<span class="pill">只算現金</span></span> <span id="venueBaseCash">0</span></p>
         <p class="small"><span>文化幣書店加成<span class="pill">最多600</span></span> <span id="cultureBonus">0</span></p>
         <p class="strong-line"><span>場地制度合計</span> <span id="venueSystemTotal">0</span></p>
-
         <p><span>場地老闆現金</span> <span id="venueCash">0</span></p>
         <p><span>場地老闆文化幣</span> <span id="venueCulture">0</span></p>
         <p class="strong-line"><span>場地實收合計</span> <span id="venueActualTotal">0</span></p>
-
         <p><span>主持人收入</span> <span id="valH">0</span></p>
         <p class="total-line"><span>主辦人(Darren)現金收入</span> <span id="valNet">0</span></p>
     </div>
 
-    <div class="info" id="cultureOffsetInfo">
-        文化幣收入已高於場地制度合計，系統已將場地現金歸零；文化幣由書店實際收取，不倒扣主辦。
-    </div>
-
-    <div class="warning" id="cashWarning">
-        現金池不足以支付場地現金與主持人收入，主辦人現金收入為負數。請確認是否需要由主辦補現金。
-    </div>
+    <div class="info" id="cultureOffsetInfo">文化幣收入已高於場地制度合計，系統已將場地現金歸零；文化幣由書店實際收取，不倒扣主辦。</div>
+    <div class="warning" id="cashWarning">現金池不足以支付場地現金與主持人收入，主辦人現金收入為負數。請確認是否需要由主辦補現金。</div>
 
     <div class="calculation-note">
         * 現金收入與文化幣收入分成兩個池子。<br>
@@ -400,7 +302,7 @@
         * 場地制度合計 = 場地基準分潤 + 文化幣書店加成。<br>
         * 場地老闆現金 = Max(0, 場地制度合計 - 文化幣收入)。<br>
         * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。<br>
-        * 主持人收入新版：保留原本場地 base 邏輯，底薪 1050，頂薪 1350。
+        * 主持人基本收入沿用原公式（1050–1350）；總人數第 51 人起每人加 30，最多加 300，文化幣人數計入總人數。
     </div>
 </div>
 
@@ -410,6 +312,9 @@ const VENUE_CASH_MAX = 1800;
 const CULTURE_BONUS_MAX = 600;
 const HOST_MIN = 1050;
 const HOST_MAX = 1350;
+const HOST_EXTRA_THRESHOLD = 50;
+const HOST_EXTRA_PER_PERSON = 30;
+const HOST_EXTRA_MAX = 300;
 
 function getNumber(id) {
     const el = document.getElementById(id);
@@ -420,18 +325,9 @@ function getNumber(id) {
     return Number.isFinite(value) && value > 0 ? value : 0;
 }
 
-function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
-}
-
-function money(value) {
-    return Math.round(Number(value) || 0);
-}
-
-function setText(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.innerText = money(value);
-}
+function clamp(value, min, max) { return Math.min(Math.max(value, min), max); }
+function money(value) { return Math.round(Number(value) || 0); }
+function setText(id, value) { const el = document.getElementById(id); if (el) el.innerText = money(value); }
 
 function calculate() {
     const n170 = getNumber('n170');
@@ -445,8 +341,6 @@ function calculate() {
 
     const cashRevenue = (n170 * 170) + (n150 * 150) + (n120 * 120);
     const cultureRevenue = c120 * 120;
-
-    // 等效收入只給主持人使用：主持人服務的是總參加人數，不是付款方式。
     const hostReferenceRevenue = cashRevenue + cultureRevenue;
 
     let venueBaseCash = 0;
@@ -458,77 +352,61 @@ function calculate() {
     let darrenCashIncome = 0;
 
     if (totalPeople > 0) {
-        // 場地基準只看現金收入，避免文化幣在場地端被算兩次。
         venueBaseCash = money(clamp((0.3 * cashRevenue) + 360, VENUE_CASH_MIN, VENUE_CASH_MAX));
-
-        // 文化幣是獨立加成，最高 600。
         cultureBonus = money(Math.min(cultureRevenue, CULTURE_BONUS_MAX));
-
-        // 2400 只是 1800 + 600 的自然結果，不另外套總額封頂。
         venueSystemTotal = money(venueBaseCash + cultureBonus);
-
-        // 書店已收到文化幣，現金只補到制度合計；最低 0，不倒扣。
         venueCash = money(Math.max(0, venueSystemTotal - cultureRevenue));
         venueActualTotal = money(venueCash + cultureRevenue);
 
-        // 主持人新版：保留原本邏輯，將底薪/頂薪各上調 150。
-        // 舊邏輯：跟著場地 base 分潤走；場地 base 超過 1200 的部分，主持人拿 50%。
-        // 新版：底薪 1050，頂薪 1350。
+        // 50 人以下完全沿用原主持人公式。
         let hostReferenceR = (0.3 * hostReferenceRevenue) + 360;
         hostReferenceR = clamp(hostReferenceR, VENUE_CASH_MIN, VENUE_CASH_MAX);
+        const hostBaseIncome = money(clamp(HOST_MIN + (hostReferenceR - 1200) * 0.5, HOST_MIN, HOST_MAX));
 
-        hostIncome = HOST_MIN + (hostReferenceR - 1200) * 0.5;
-        hostIncome = money(clamp(hostIncome, HOST_MIN, HOST_MAX));
+        // 總人數包含現金與文化幣；第 51 人起每人加 30，最多加 300。
+        const hostExtraIncome = Math.min(
+            HOST_EXTRA_MAX,
+            Math.max(0, totalPeople - HOST_EXTRA_THRESHOLD) * HOST_EXTRA_PER_PERSON
+        );
+        hostIncome = money(hostBaseIncome + hostExtraIncome);
 
-        // Darren 只從現金池拿。
         darrenCashIncome = money(cashRevenue - venueCash - hostIncome);
     }
 
     document.getElementById('totalP').innerText = totalPeople;
-
     setText('sumN170', n170);
     setText('sumN150', n150);
     setText('sumN120', n120);
     setText('sumC120', c120);
     setText('sumTotalPeople', totalPeople);
-
     setText('sumVenueCash', venueCash);
     setText('sumHostIncome', hostIncome);
     setText('sumDarrenIncome', darrenCashIncome);
     setText('cashT', cashRevenue);
     setText('cultureT', cultureRevenue);
     setText('effectiveT', hostReferenceRevenue);
-
     setText('venueBaseCash', venueBaseCash);
     setText('cultureBonus', cultureBonus);
     setText('venueSystemTotal', venueSystemTotal);
     setText('venueCash', venueCash);
     setText('venueCulture', cultureRevenue);
     setText('venueActualTotal', venueActualTotal);
-
     setText('valH', hostIncome);
     setText('valNet', darrenCashIncome);
 
-    document.getElementById('cultureOffsetInfo').style.display =
-        totalPeople > 0 && cultureRevenue > venueSystemTotal ? 'block' : 'none';
-
-    document.getElementById('cashWarning').style.display =
-        totalPeople > 0 && darrenCashIncome < 0 ? 'block' : 'none';
+    document.getElementById('cultureOffsetInfo').style.display = totalPeople > 0 && cultureRevenue > venueSystemTotal ? 'block' : 'none';
+    document.getElementById('cashWarning').style.display = totalPeople > 0 && darrenCashIncome < 0 ? 'block' : 'none';
 }
 
 function clearInputs() {
-    ['n170', 'n150', 'n120', 'c120'].forEach(id => {
-        document.getElementById(id).value = '';
-    });
+    ['n170', 'n150', 'n120', 'c120'].forEach(id => { document.getElementById(id).value = ''; });
     calculate();
 }
 
 window.calculate = calculate;
 window.clearInputs = clearInputs;
-
 document.addEventListener('DOMContentLoaded', calculate);
 calculate();
 </script>
-
 </body>
 </html>
