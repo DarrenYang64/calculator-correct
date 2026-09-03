@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Darren 語言交換結算系統｜場地 1050–2100 版</title>
+    <title>Darren 語言交換結算系統｜場地 1050–2100｜主持人基本費 1050–1500</title>
     <style>
         :root {
             --bg-color: #f4f4f9;
@@ -247,7 +247,7 @@
 
 <div class="container">
     <h2>活動結算系統</h2>
-    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>主持人 1050–1350＋超額加給｜上方摘要可直接截圖給主持人</div>
+    <div class="subtitle">文化幣 600 加成版：現金池 / 文化幣池分開計算<br>主持人 1050–1500＋超額加給｜上方摘要可直接截圖給主持人</div>
 
     <div class="section-title">現金收入</div>
     <div class="input-group"><label>NTD 170 現金人數</label><input type="tel" id="n170" placeholder="0" inputmode="numeric" pattern="[0-9]*" oninput="calculate()" onchange="calculate()" onkeyup="calculate()"></div>
@@ -302,7 +302,9 @@
         * 場地制度合計 = 場地基準分潤 + 文化幣書店加成。<br>
         * 場地老闆現金 = Max(0, 場地制度合計 - 文化幣收入)。<br>
         * 主持人收入以主持人計算用收入（現金 + 文化幣）計算，避免主持人因文化幣少拿。<br>
-        * 主持人基本收入沿用原公式（1050–1350）；總人數第 51 人起每人加 30，最多加 300，文化幣人數計入總人數。
+        * 主持人參考值 = 0.3 ×（現金收入 + 文化幣收入）+ 360，Min 1050，Max 2100。<br>
+        * 主持人基本收入 = 1050 +（主持人參考值 - 1200）× 0.5，Min 1050，Max 1500。<br>
+        * 總人數第 51 人起每人加 30，最多加 300，文化幣人數計入總人數；主持人含加給最高 1800。
     </div>
 </div>
 
@@ -311,7 +313,7 @@ const VENUE_CASH_MIN = 1050;
 const VENUE_CASH_MAX = 2100;
 const CULTURE_BONUS_MAX = 600;
 const HOST_MIN = 1050;
-const HOST_MAX = 1350;
+const HOST_MAX = 1500;
 const HOST_EXTRA_THRESHOLD = 50;
 const HOST_EXTRA_PER_PERSON = 30;
 const HOST_EXTRA_MAX = 300;
@@ -358,7 +360,7 @@ function calculate() {
         venueCash = money(Math.max(0, venueSystemTotal - cultureRevenue));
         venueActualTotal = money(venueCash + cultureRevenue);
 
-        // 50 人以下完全沿用原主持人公式。
+        // 主持人參考值沿用場地上下限 1050–2100；基本收入保底 1050、封頂 1500。
         let hostReferenceR = (0.3 * hostReferenceRevenue) + 360;
         hostReferenceR = clamp(hostReferenceR, VENUE_CASH_MIN, VENUE_CASH_MAX);
         const hostBaseIncome = money(clamp(HOST_MIN + (hostReferenceR - 1200) * 0.5, HOST_MIN, HOST_MAX));
